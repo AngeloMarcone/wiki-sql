@@ -12,11 +12,8 @@
   - [statodominio](#statodominio)
 - [Funzioni e Trigger](#funzioni-e-trigger)
   - [rep_aut()](#funzione-rep_aut)
-  - [tr_rep_aut](#trigger-tr_rep_aut)
   - [aggiorna_caratteri_dopo_inserimento_modifica()](#funzione-aggiorna_caratteri_dopo_inserimento_modifica)
-  - [aggiorna_caratteri_trigger](#trigger-aggiorna_caratteri_trigger)
   - [aggiorna_pagina_dopo_modifica_stato()](#funzione-aggiorna_pagina_dopo_modifica_stato)
-  - [aggiorna_pagina_trigger](#trigger-aggiorna_pagina_trigger)
 
 ## Tabelle
 
@@ -71,7 +68,7 @@
    - La funzione tiene conto del numero di modifiche proposte, della frazione di modifiche accettate e del numero di pagine realizzate dall'autore.
    - La reputazione viene aggiornata nella tabella Utente.
 
-1.1. ### Trigger tr_rep_aut
+1.1. Trigger tr_rep_aut
    - Un trigger che esegue la funzione rep_aut() automaticamente dopo l'inserimento o l'aggiornamento di una riga nella tabella Modifica.
 
 ```sql
@@ -144,7 +141,7 @@ EXECUTE FUNCTION rep_aut();
   - all'utente associato a un autore nella tabella `autore`. In caso di corrispondenza, aggiorna le informazioni nelle tabelle `Frase` e `Modifica`.
   - riassumendo se un autore fa una modifica questa viene applicata immediatamente.
     
-2.1. ### Trigger aggiorna_caratteri_trigger
+2.1. Trigger aggiorna_caratteri_trigger
 
   -Il trigger `aggiorna_caratteri_trigger` viene attivato automaticamente dopo l'inserimento di una nuova riga nella tabella Modifica. Esso esegue la funzione `aggiorna_caratteri_dopo_inserimento_modifica()` per gestire l'aggiornamento   
   -delle tabelle Frase e Modifica in base alle condizioni specificate.
@@ -177,7 +174,7 @@ EXECUTE FUNCTION aggiorna_caratteri_dopo_inserimento_modifica();
   - La funzione `aggiorna_pagina_dopo_modifica_stato()` è progettata per essere utilizzata come trigger. La funzione verifica se lo stato della modifica è impostato a 1 e, in caso affermativo,
   - aggiorna la colonna `caratteri` nella tabella `Frase` in base ai parametri specificati.
 
-3.1 ### Trigger 'aggiorna_pagina_trigger'
+3.1 Trigger 'aggiorna_pagina_trigger'
   - Il trigger `aggiorna_pagina_trigger` viene attivato automaticamente dopo l'aggiornamento di una riga nella tabella `Modifica`. Esso esegue la funzione `aggiorna_pagina_dopo_modifica_stato()` per gestire l'aggiornamento della tabella
   - `Frase` in base allo stato specificato nella tabella `Modifica`.
 
